@@ -1,0 +1,136 @@
+@use '../core/_variables' as *;
+@use '../core/_functions' as *;
+@use '../core/_mixins' as *;
+
+.aside {
+  @include mix-position(
+      $position: sticky,
+      $top: 0,
+      $height: 95vh
+  );
+  @include mix-flex(
+    $direction: column,
+    $align: center,
+    $justify: center,
+    $gap: 1rem
+  );
+  align-self: start;
+
+  & > * {
+    width: 100%;
+  }
+
+  &__progress {
+    @include mix-flex(
+        $direction: column,
+        $align: center,
+        $gap: .4rem
+    );
+    padding-top: 1rem;
+    height: auto;
+
+    .point {
+      width: .5rem;
+      aspect-ratio: 1 / 1;
+      border-radius: 100%;
+      background-color: $color-grey-lv-6;
+      transition: .35s;
+
+      &:nth-child(6n + 5) {
+        transform: translateX(-8px);
+      }
+
+      &:nth-child(6n + 3) {
+        transform: translateX(8px);
+      }
+
+      &.active {
+        background-color: $color-point-background;
+      }
+    }
+
+    .point-section {
+      margin: 0.5rem 0;
+      transition: .025s;
+
+      &:active {
+        transform: scale(.85);
+      }
+
+      &.active {
+        .point-section__icon {
+          box-shadow: 0 0 10px 1px $color-point-shadow;
+          background-color: $color-point-background;
+        }
+      }
+
+      &__icon {
+        background-color: $color-grey-lv-6;
+        box-shadow: 1px 1px 1px 1px $color-grey-lv-2;
+        border-radius: 100%;
+        padding: .25rem;
+        width: 32px;
+        aspect-ratio: 1 / 1;
+        color: $color-grey-lv-3;
+        transition: .3s;
+
+        &--active {
+          color: $color-blue-260;
+          @include neon-dropShadow($neon-blue-260, 4px, 4px, 1);
+        }
+      }
+    }
+  }
+
+  &__setting {
+    @include mix-flex(
+        $direction: column,
+        $align: center,
+        $justify: flex-end,
+        $gap: .4rem
+    );
+    flex-grow: 1;
+
+    .panel {
+      height: auto;
+      width: 50%;
+      border-radius: 1rem;
+      background-color: $color-grey-lv-4;
+      box-shadow: 3px 3px 8px 1px $color-grey-lv-1;
+      transition-duration: 1.5s;
+
+      &.transform {
+        transform: translateY(-4rem);
+      }
+
+      & > * {
+        width: 100%;
+      }
+
+      &__button {
+        padding: .75rem;
+
+        &-icon {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          padding: .6rem;
+          border-radius: .5rem;
+          background-color: $color-grey-lv-1;
+          transition-duration: .25s;
+
+          &.light-relax {
+            background-color: $color-grey-lv-6;
+          }
+
+          &:hover {
+            background-color: $color-blue-230;
+          }
+
+          path {
+            stroke-width: 0;
+          }
+        }
+      }
+    }
+  }
+}

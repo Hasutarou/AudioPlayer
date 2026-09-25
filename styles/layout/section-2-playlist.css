@@ -1,0 +1,12 @@
+.tracks-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.track-card {
+  height: 10rem;
+}
+
+/*# sourceMappingURL=section-2-playlist.css.map */

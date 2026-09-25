@@ -1,0 +1,197 @@
+@use '../core/_variables' as *;
+@use '../core/_functions' as *;
+@use '../core/_mixins' as *;
+
+.header {
+  @include mix-flex(
+      $direction: row,
+      $align: center,
+      $justify: space-between
+  );
+  grid-area: header;
+  padding: 0;
+}
+
+.logo-group {
+  @include mix-flex(
+      $direction: row,
+      $align: center,
+      $justify: center,
+  );
+  @include mix-position(
+    $position: relative,
+    $width: auto,
+    $height: 100%,
+  );
+
+  &__icon {
+    width: 40px;
+    height: auto;
+    fill: hsl(265, 100%, 50%);
+    transition: filter .2s linear;
+    @include neon-dropShadow($neon-blue-230, 2px, 4px, 2);
+
+
+    polyline {
+      transform-origin: center;
+      transition: transform .2s linear;
+    }
+
+    &:hover {
+      @include neon-dropShadow($neon-blue-230, 4px, 8px, 2);
+
+      polyline {
+        transform: translateY(-4px) scaleY(-1);
+      }
+    }
+  }
+
+  &__text {
+    position: relative;
+  }
+
+  &__text-img {
+    width: 150px;
+    height: auto;
+  }
+}
+
+.nav {
+  @include mix-flex(
+      $align: center,
+      $justify: center,
+  );
+  @include mix-position(
+      $position: relative,
+      $width: auto,
+      $height: 100%,
+  );
+
+  &__list {
+    @include mix-flex(
+        $align: center,
+        $justify: center,
+        $gap: 4rem,
+    );
+    @include mix-position(
+        $position: relative,
+        $width: auto,
+        $height: 100%,
+    );
+  }
+
+  &__element {
+    a:hover {
+      font-weight: 500;
+
+      &::before {
+        font-weight: 100;
+      }
+    }
+
+    a:not(.nav__item--background):hover {
+      color: $color-blue-230;
+    }
+
+    .nav__item--background:hover {
+      background-color: $color-blue-260;
+      color: white;
+    }
+  }
+
+  &__item {
+    position: relative;
+    font-family: $font-bahnschrift;
+    font-size: $font-size-0_875rem;
+    font-weight: 100;
+    color: $color-light;
+    transition:
+        color .25s linear,
+        font-weight .15s linear;
+
+    &--background {
+      @include mod-shadow();
+      background-color: $color-grey-lv-5;
+      padding: .65rem;
+      margin-inline: -.325rem;
+      border-radius: .5rem;
+      color: $color-light;
+      transition: background-color .35s linear;
+      text-wrap: nowrap;
+
+      &::before {
+        @include mix-pseudo(
+            $content: 'DLC',
+            $top: 0,
+            $left: 100%,
+            $z-index: 200
+        );
+        text-align: left;
+        transform: translateY(-50%) translateX(-50%);
+        background-color: $color-dark;
+        padding: .2rem;
+        border-radius: .25rem;
+        color: $color-light;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+@property --color-gradient-login-start {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: hsla(210, 100%, 50%, 1);
+}
+
+@property --color-gradient-login-end {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: hsla(280, 100%, 50%, 1);
+}
+
+.login {
+  @include mix-flex(
+      $align: center,
+      $justify: space-evenly,
+      $gap: 1.5rem
+  );
+
+  & > * {
+    @include mod-shadow();
+    @include mix-flex(
+        $align: center,
+        $justify: center,
+    );
+    @include mix-position(
+        $position: relative,
+        $width: auto,
+        $height: 2.25rem,
+    );
+    padding-inline: .75rem;
+    font-family: $font-bahnschrift;
+    border-radius: 6px;
+    font-size: $font-size-0_875rem;
+    color: white;
+  }
+
+  &__signup {
+    color: $color-light;
+    background-color: $color-grey-lv-5;
+    transition: .75s ease-out;
+
+    &:hover {
+      background-color: $color-grey-lv-1;
+    }
+  }
+
+  &__signing {
+    background-image: linear-gradient(45deg, var(--color-gradient-login-start), var(--color-gradient-login-end));
+    transition: --color-gradient-login-start .95s, --color-gradient-login-end .95s;
+
+    &:hover {
+      --color-gradient-login-start: hsla(310, 100%, 50%, 0.9);
+      --color-gradient-login-end: hsla(240, 100%, 50%, 0.9);
+    }
+  }
+}

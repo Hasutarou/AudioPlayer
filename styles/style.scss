@@ -1,0 +1,42 @@
+// Подключение Core стилей
+@use 'core/_fonts' as *;
+@use 'core/_variables' as *;
+@use 'core/_functions' as *;
+@use 'core/_mixins' as *;
+@use 'core/_inheritance' as *;
+@use 'core/_normalize' as *;
+@use 'core/_animation' as *;
+@use 'core/_adaptation' as *;
+@use 'core/_components' as *;
+
+// Подключение Layout стилей
+@forward 'layout/header';
+@forward 'layout/aside';
+@forward 'layout/main';
+@forward 'layout/section-1-player';
+@forward 'layout/section-2-playlist';
+@forward 'layout/section-3-recommendation';
+@forward 'layout/section-4-statistics';
+@forward 'layout/footer';
+
+.body {
+  display: grid;
+  height: auto;
+  grid-template-areas:
+    "header header"
+    "aside main"
+    "aside footer";
+  grid-template-columns: 9rem 1fr;
+  grid-template-rows: 6rem 1fr 20rem;
+  padding-inline: 10%;
+  background-color: $color-body;
+
+  .header { grid-area: header; }
+  .main { grid-area: main; }
+  .footer { grid-area: footer; }
+  .aside { grid-area: aside; }
+
+  section:not(:first-child) {
+    margin-block: 5rem;
+  }
+}

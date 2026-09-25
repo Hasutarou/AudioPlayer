@@ -1,0 +1,30 @@
+@use '../core/_variables' as *;
+@use '../core/_mixins' as *;
+
+@keyframes figure-transition {
+  0% {
+    box-shadow:
+        3px 3px 5px 2.5px $color-grey-lv-1,
+        inset 1.75px 1.75px 1.5px .5px $color-grey-lv-4;
+  }
+  25% {
+    box-shadow:
+        3px 3px 5px 2.5px $color-grey-lv-1,
+        inset 1.75px -1.75px 1.5px .5px $color-point-background;
+  }
+  50% {
+    box-shadow:
+        3px 3px 5px 2.5px $color-grey-lv-1,
+        inset -1.75px -1.75px 1.5px .5px $color-point-background;
+  }
+  75% {
+    box-shadow:
+        3px 3px 5px 2.5px $color-grey-lv-1,
+        inset -1.75px 1.75px 1.5px .5px $color-point-background;
+  }
+  100% {
+    box-shadow:
+        3px 3px 5px 2.5px $color-grey-lv-1,
+        inset 1.75px 1.75px 1.5px .5px $color-grey-lv-4;
+  }
+}

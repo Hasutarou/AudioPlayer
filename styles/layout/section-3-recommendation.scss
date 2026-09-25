@@ -1,0 +1,109 @@
+@use '../core/_variables' as *;
+@use '../core/_mixins' as *;
+
+.recommendations {
+  @include mix-flex(
+      $direction: column,
+      $gap: 1rem
+  );
+}
+
+.grid-recommendations {
+  display: grid;
+  width: 100%;
+  min-height: 20rem;
+  max-height: 20rem;
+  grid-template-areas:
+      "block-auto block-playlist block-album"
+      "block-auto block-track block-search";
+  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  background-color: $color-grey-lv-4;
+  border-radius: 1rem;
+  padding: 1rem;
+  gap: 1rem;
+
+  & > * {
+    display: flex;
+    padding: .75rem 1rem;
+    position: relative;
+    background-color: $color-grey-lv-3;
+    border-radius: .5rem;
+
+    &::before {
+      @include mix-pseudo(
+          $top: 1rem,
+          $left: 1rem,
+          $width: 1rem,
+          $height: 1rem,
+          $z-index: 300
+      );
+      background-color: rgba($color-grey-lv-1, .25);
+      border-radius: 100%;
+      filter: drop-shadow(0 0 4px rgba($color-blue-260, .5))
+              drop-shadow(0 0 8px rgba($color-blue-260, .4))
+              drop-shadow(0 0 12px rgba($color-blue-260, .3))
+              drop-shadow(0 0 16px rgba($color-blue-260, .2));
+      transition-duration: .8s;
+    }
+
+    &:hover::before {
+      background-color: $color-blue-260;
+    }
+
+    svg {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      padding: 1rem;
+      width: 5rem;
+      aspect-ratio: 1 / 1;
+      fill: $color-grey-lv-5;
+
+      rect, polygon, circle, ellipse {
+        stroke: $color-grey-lv-5;
+        stroke-width: 1;
+      }
+
+      polygon {
+        fill: transparent;
+      }
+
+      circle {
+        r: 5px;
+      }
+    }
+
+    &:first-child svg {
+      width: 7rem;
+    }
+  }
+
+  &__auto {
+    grid-area: block-auto;
+  }
+
+  &__playlist {
+    grid-area: block-playlist;
+  }
+
+  &__album {
+    grid-area: block-album;
+  }
+
+  &__track {
+    grid-area: block-track;
+  }
+
+  &__search {
+    grid-area: block-search;
+  }
+
+  &__text {
+    position: relative;
+    left: 2rem;
+    font-size: $font-size-1_25rem;
+    font-family: $font-franklin;
+    color: $color-light;
+  }
+}

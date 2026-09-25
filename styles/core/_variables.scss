@@ -1,0 +1,95 @@
+// Цвета переменных CSS для тёмной темы
+body[data-theme='dark'] {
+  --theme: 'dark';
+  --color-light: white;
+  --color-dark: black;
+  --color-body: hsl(225, 14%, 10%);
+  --color-grey-lv-1: hsl(225, 14%, 4%);
+  --color-grey-lv-2: hsl(225, 14%, 6%);
+  --color-grey-lv-3: hsl(225, 14%, 8%);
+  --color-grey-lv-4: hsl(225, 14%, 12%);
+  --color-grey-lv-5: hsl(225, 14%, 14%);
+  --color-grey-lv-6: hsl(225, 14%, 16%);
+  --color-blue-230: hsl(230 100% 50%);
+  --color-blue-230-lg: hsl(230 100% 70%);
+  --color-blue-260: hsl(260 100% 50%);
+  --color-blue-260-lg: hsl(260 100% 70%);
+  --neon-blue-230: var(--color-blue-260);
+  --neon-blue-260: var(--color-blue-260-lg);
+  --color-point-shadow: var(--color-blue-260);
+  --color-point-background: var(--color-blue-260);
+}
+
+// Цвета переменных CSS для светлой темы
+body[data-theme='light'] {
+  --theme: 'light';
+  --color-light: black;
+  --color-dark: white;
+  --color-body: hsl(0, 0%, 90%);
+  --color-grey-lv-1: hsl(0, 0%, 98%);
+  --color-grey-lv-2: hsl(0, 0%, 96%);
+  --color-grey-lv-3: hsl(0, 0%, 88%);
+  --color-grey-lv-4: hsl(0, 0%, 84%);
+  --color-grey-lv-5: hsl(0, 0%, 80%);
+  --color-grey-lv-6: hsl(0, 0%, 75%);
+  --color-blue-230: hsl(230 80% 50%);
+  --color-blue-230-lg: hsl(230 80% 70%);
+  --color-blue-260: hsl(260 80% 50%);
+  --color-blue-260-lg: hsl(260 80% 70%);
+  --neon-blue-230: none;
+  --neon-blue-260: none;
+  --color-point-shadow: var(--color-grey-lv-1);
+  --color-point-background: white;
+}
+
+// Основные цвета
+$color-light: var(--color-light);
+$color-dark: var(--color-dark);
+
+// Структурные цвета
+$color-body: var(--color-body);
+
+// Градация серых оттенков
+$color-grey-lv-1: var(--color-grey-lv-1);
+$color-grey-lv-2: var(--color-grey-lv-2);
+$color-grey-lv-3: var(--color-grey-lv-3);
+$color-grey-lv-4: var(--color-grey-lv-4);
+$color-grey-lv-5: var(--color-grey-lv-5);
+$color-grey-lv-6: var(--color-grey-lv-6);
+
+// Градация основных оттенков
+$color-blue-230: var(--color-blue-230);
+$color-blue-260: var(--color-blue-260);
+$neon-blue-230: var(--neon-blue-230);
+$neon-blue-260: var(--neon-blue-260);
+
+// Градация основные cемейств шрифтов
+$font-bahnschrift: 'Bahnschrift', sans-serif;
+$font-franklin: 'Franklin Gothic Medium Cond', sans-serif;
+$font-protest: 'Protest Guerrilla', sans-serif;
+$font-nunito: 'Nunito', sans-serif;
+
+// Градация основных размеров шрифтов
+$font-size-7_5rem: 7.5rem;
+$font-size-5rem: 5rem;
+$font-size-4rem: 4rem;
+$font-size-3rem: 3rem;
+$font-size-2rem: 2rem;
+$font-size-1_5rem: 1.5rem;
+$font-size-1_25rem: 1.25rem;
+$font-size-1rem: 1rem;
+$font-size-0_875rem: 0.875rem;
+$font-size-0_75rem: 0.75rem;
+$font-size-0_5rem: 0.5rem;
+
+// Градация основных Breakpoints
+$point-mobile: 360px;
+$point-tablet: 768px;
+$point-desktop: 1200px;
+$point-wide: 1920px;
+
+// Дополнительные переменные
+$standard-scale: 1;
+$multi-scale: 1.25;
+$color-point-background: var(--color-point-background);
+$color-point-shadow: var(--color-point-shadow);

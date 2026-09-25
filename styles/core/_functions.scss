@@ -1,0 +1,15 @@
+@mixin neon-dropShadow($color-var, $start: 2px, $max: 12px, $step: 2, $min-opacity: 85%) {
+  $shadows: ();
+  $current-size: $start;
+  $current-opacity: $min-opacity;
+
+  @while $current-size <= $max {
+    $shadow: drop-shadow(0 0 $current-size color-mix(in srgb, $color-var $current-opacity, transparent));
+    $shadows: append($shadows, $shadow);
+
+    $current-size: $current-size + $step;
+    $current-opacity: $current-opacity - 15;
+  }
+
+  filter: $shadows;
+}

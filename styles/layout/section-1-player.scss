@@ -1,0 +1,233 @@
+@use '../core/_variables' as *;
+@use '../core/_mixins' as *;
+
+.player {
+  @include mix-flex(
+      $direction: column,
+      $gap: 1rem
+  );
+
+  &__row {
+    @include mix-flex(
+        $direction: row,
+        $align: center,
+        $gap: 1rem
+    );
+    @include mix-position(
+        $position: relative,
+        $width: 100%
+    );
+    height: 20rem;
+
+    & > * {
+      height: 100%;
+      background-color: $color-grey-lv-4;
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+  }
+}
+
+.track-metadata {
+  flex-basis: 20%;
+
+  &__cover {
+    @include mix-position(
+        $position: relative,
+        $width: 100%,
+        $height: 100%
+    );
+    @include mix-flex(
+        $direction: column,
+        $align: center,
+        $gap: .5rem,
+        $justify: space-evenly
+    );
+  }
+
+  &__img {
+    @include mix-position(
+        $position: relative,
+        $width: 100%,
+    );
+    @include mix-flex(
+        $align: center,
+        $justify: center
+    );
+    aspect-ratio: 1 / 1;
+    font-size: $font-size-1_25rem;
+    font-family: $font-bahnschrift;
+    background-color: $color-grey-lv-3;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    color: $color-light;
+  }
+
+  &__caption {
+    @include mix-flex(
+        $align: center,
+        $justify: center
+    );
+    flex-basis: 10%;
+    font-size: $font-size-1rem;
+    font-family: $font-bahnschrift;
+    color: $color-light;
+    text-transform: uppercase;
+  }
+}
+
+.player-controls {
+  @include mix-flex(
+      $direction: column
+  );
+  flex-grow: 1;
+  padding-top: 1.5rem;
+  overflow: hidden;
+
+  &__track-info {
+    @include mix-flex(
+        $direction: column,
+        $gap: .4rem
+    );
+    height: auto;
+    padding-left: .25rem;
+  }
+
+  &__track-title {
+    position: relative;
+    font-size: $font-size-2rem;
+    font-family: $font-bahnschrift;
+    color: $color-light;
+
+    &::before {
+      @include mix-pseudo(
+          $top: 50%,
+          $left: -1.25rem,
+          $width: .5rem,
+          $height: 2.5rem,
+          $z-index: 300
+      );
+      transform: translateY(-50%);
+      transform-origin: center;
+      background-color: $color-blue-260;
+    }
+  }
+
+  &__track-details {
+    @include mix-flex(
+        $direction: row
+    );
+
+    span + span::before {
+      content: '•';
+      width: auto;
+      aspect-ratio: 1 / 1;
+      margin-inline: .5rem;
+      color: $color-light;
+      display: inline-block;
+    }
+
+    & > * {
+      font-size: $font-size-1rem;
+      font-family: $font-bahnschrift;
+      font-weight: 400;
+      color: $color-light;
+    }
+  }
+
+  &__buttons {
+    @include mix-flex(
+        $direction: column,
+        $align: center,
+        $justify: flex-end,
+        $gap: .25rem,
+    );
+    padding: .5rem;
+    flex-grow: 1;
+
+    & > * {
+      width: 100%;
+    }
+  }
+
+  &__progress {
+    height: auto;
+
+    &-bar {
+      width: 100%;
+      height: .4rem;
+      border-radius: 1rem;
+      appearance: none;
+      border: none;
+      background-color: $color-grey-lv-2;
+
+      &::-moz-progress-bar,
+      &::-webkit-progress-bar,
+      &::-webkit-progress-value {
+        background-color: $color-blue-260;
+      }
+    }
+  }
+
+  &__time {
+    @include mix-flex(
+        $direction: row,
+        $align: center,
+        $justify: space-between,
+    );
+    padding-inline: .25rem;
+    color: $color-light;
+    font-family: $font-franklin;
+  }
+
+  &__functional {
+    @include mix-flex(
+        $direction: row,
+        $align: center,
+        $justify: center,
+        $gap: 2rem
+    );
+
+    & > * {
+      --base-scale: 1;
+    }
+
+    button {
+      @include mix-flex(
+          $align: center,
+          $justify: center,
+      );
+      position: relative;
+      width: 40px;
+      aspect-ratio: 1 / 1;
+      border-radius: 100%;
+      padding: .45rem;
+      background-color: $color-grey-lv-3;
+      transition: transform .1s linear;
+
+      &:hover {
+        --result-scale: calc(var(--base-scale) * 1.15);
+        transform: scale(var(--result-scale));
+      }
+    }
+
+    svg {
+      width: 80%;
+      height: 80%;
+
+      path {
+        fill: $color-light;
+      }
+    }
+  }
+
+  &__play-scale {
+    --base-scale: 1.25;
+    transform: scale(var(--base-scale));
+  }
+
+  &__next-mirrored {
+    --base-scale: -1;
+    transform: scale(var(--base-scale));
+  }
+}

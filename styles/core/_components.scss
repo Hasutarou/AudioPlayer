@@ -1,0 +1,97 @@
+@use '../core/_variables' as *;
+@use '../core/_mixins' as *;
+
+section {
+  max-width: 100%;
+  min-height: 0;
+}
+
+// Самостоятельный элемент: Наименование секции
+.start-section {
+  @include mix-flex(
+      $direction: row,
+      $align: center,
+      $justify: left,
+      $gap: 1.5rem
+  );
+  @include mix-position(
+      $position: relative,
+      $width: 100%,
+      $height: 4rem,
+  );
+  padding-inline: 1rem;
+  border-radius: 1rem;
+  background-color: $color-grey-lv-2;
+  overflow: hidden;
+  outline: 0 solid $color-blue-260;
+  transition: outline .4s linear;
+
+  &:hover {
+    outline: 1px solid $color-blue-260;
+
+    .start-section__figure {
+      animation: figure-transition 4s infinite linear;
+    }
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &::before {
+    @include mix-pseudo(
+        $top: 0,
+        $right: -100%,
+        $width: 100%,
+        $height: 100%
+    );
+    color: $color-light;
+    transform: translateX(-100%) scaleX(-1);
+    background: linear-gradient(
+            to right,
+            $color-blue-260 0%,
+            $color-blue-230 10%,
+            transparent 30%
+    );
+    opacity: 0;
+    transition: opacity .4s linear;
+  }
+
+  &::after {
+    @include mix-pseudo(
+        $content: 'SECTION',
+        $top: 0,
+        $right: 1%,
+        $width: 100%,
+        $height: 100%,
+        $z-index: 300
+    );
+    @include mix-flex(
+        $align: flex-end,
+        $justify: right
+    );
+    color: $color-grey-lv-2;
+    text-transform: uppercase;
+    font-family: $font-bahnschrift;
+    font-weight: 900;
+    font-size: $font-size-3rem;
+  }
+
+  &__figure {
+    width: 2rem;
+    aspect-ratio: 1 / 1;
+    background-color: $color-grey-lv-3;
+    border-radius: 100%;
+    box-shadow:
+        3px 3px 5px 2.5px $color-grey-lv-1,
+        inset 1.75px 1.75px 1.5px .5px $color-grey-lv-4;
+  }
+
+  &__title {
+    font-family: $font-franklin;
+    font-size: $font-size-1_25rem;
+    text-transform: uppercase;
+    letter-spacing: .75px;
+    color: $color-light;
+  }
+}

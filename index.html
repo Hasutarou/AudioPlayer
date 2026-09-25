@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width,
+    user-scalable=no,
+    initial-scale=1.0,
+    maximum-scale=1.0,
+    minimum-scale=1.0"
+  >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="scripts/progressPoint.js" defer></script>
+  <script src="scripts/panelSetting.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.0/jsmediatags.min.js"></script>
+  <script src="scripts/archiveTracks.js" defer></script>
+  <script src="scripts/server.js" defer></script>
+  <title>Player</title>
+</head>
+<body class="body" data-theme="dark">
+<header class="header">
+  <div class="logo-group">
+    <a class="logo-group__link" href="index.html">
+      <svg class="logo-group__icon" viewBox="0 0 75.93 94.45">
+        <path d="M75.88,50.23s-5.1,16.94-20.02,23.3c-13.19,5.61-22.28-2.94-36.19,2.26-9.88,3.7-16,12.02-19.68,18.66,4.1-3.34,10.92-7.95,20.13-9.79,15.95-3.18,23.23,5.13,34.15,1.58,17.59-5.71,21.6-36.01,21.6-36.01Z"/>
+        <path d="M.05,44.22S5.14,27.27,20.06,20.92c13.19-5.61,22.28,2.94,36.19-2.26,9.88-3.7,16-12.02,19.68-18.66-4.1,3.34-10.92,7.95-20.13,9.79-15.95,3.18-23.23-5.13-34.15-1.58C4.05,13.91,.05,44.22,.05,44.22Z"/>
+        <path d="M42.66,25.72h-4.68V57.96c-1.54-.13-3.32,.07-5.14,.66-4.5,1.47-7.46,4.75-6.62,7.34,.84,2.58,5.17,3.49,9.67,2.02,4.29-1.4,7.18-4.45,6.71-6.97h0l.06-35.28Z"/>
+        <polyline points="46.24 25.72 46.24 30.94 70.9 30.94"/>
+        <polyline points="46.24 34.29 46.24 39.51 70.9 39.51"/>
+        <polyline points="46.24 42.85 46.24 48.07 70.9 48.07"/>
+      </svg>
+    </a>
+    <picture class="logo-group__text">
+      <!-- Пока нет масштабов 1x 2x 3x и других форматов (для V3.00) -->
+      <img
+        class="logo-group__text-img"
+        src="media/logotype/logo-test.png"
+        alt="Неоновый текст">
+    </picture>
+  </div>
+
+  <nav class="nav">
+    <ul class="nav__list">
+      <li class="nav__element">
+        <a href="" class="nav__item">Коллекция</a>
+      </li>
+      <li class="nav__element">
+        <a href="" class="nav__item">Жанры</a>
+      </li>
+      <li class="nav__element">
+        <a href="" class="nav__item">О сайте</a>
+      </li>
+      <li class="nav__element">
+        <a href="" class="nav__item nav__item--background">О вёрстке</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="login">
+      <a href="" target="_blank" class="login__signup">Авторизоваться</a>
+      <a href="" target="_blank" class="login__signing">Войти</a>
+  </div>
+</header>
+
+<main class="main">
+  <section class="player" id="player">
+    <div class="start-section">
+      <div class="start-section__figure"></div>
+      <h2 class="start-section__title">Плеер</h2>
+    </div>
+
+    <div class="player__row">
+      <div class="track-metadata">
+        <figure class="track-metadata__cover">
+          <img class="track-metadata__img" src="" alt="Обложка">
+          <figcaption class="track-metadata__caption">Caption</figcaption>
+        </figure>
+      </div>
+
+      <div class="player-controls">
+        <!-- Блок с информацией о треке -->
+        <div class="player-controls__track-info">
+          <h3 class="player-controls__track-title">Название трека</h3>
+          <div class="player-controls__track-details">
+            <span class="player-controls__track-artist">Исполнитель</span>
+            <span class="player-controls__track-album">Альбом</span>
+          </div>
+        </div>
+
+        <!-- Блок с кнопками управления -->
+        <div class="player-controls__buttons">
+          <div class="player-controls__progress">
+            <progress
+              class="player-controls__progress-bar"
+              value="0"
+              max="100"></progress>
+          </div>
+          <div class="player-controls__time">
+            <span class="player-controls__time-current">0:00</span>
+            <span class="player-controls__time-end">0:00</span>
+          </div>
+          <div class="player-controls__functional">
+            <button type="button" class="player-controls__shuffle">
+              <svg class="player-controls__shuffle-icon">
+
+              </svg>
+            </button>
+
+            <button type="button" class="player-controls__prev">
+              <svg class="player-controls__prev-icon" viewBox="0 0 55.23 70.97">
+                <path d="M6.9,70.97h-.9c-3.31,0-6-2.69-6-6V6C0,2.69,2.69,0,6,0h.9c3.31,0,6,2.69,6,6v58.97c0,3.31-2.69,6-6,6ZM29.44,35.48l12.69,12.69V22.79l-12.69,12.69Zm26.09,28.98c0,3.47-2.81,6.28-6.27,6.28h-.86c-.07,0-.15-.01-.22-.01-1.45,.05-2.91-.47-4.02-1.57L14.49,39.48c-1.11-1.1-1.62-2.56-1.58-4-.04-1.44,.47-2.9,1.58-4L43.2,2.77C44.32,1.1,46.23,0,48.4,0h.86c3.46,0,6.27,2.81,6.27,6.27v58.19Zm-13.4-16.29V22.79l-12.69,12.69,12.69,12.69Z"/>
+              </svg>
+            </button>
+
+            <button type="button" class="player-controls__play player-controls__play-scale">
+              <svg class="player-controls__play-icon" viewBox="0 0 50.35 70.97">
+                <path d="M6.9,70.97h-.9c-3.31,0-6-2.69-6-6V6C0,2.69,2.69,0,6,0h.9c3.31,0,6,2.69,6,6v58.97c0,3.31-2.69,6-6,6Zm43.44-6V6C50.35,2.69,47.66,0,44.35,0h-.9c-3.31,0-6,2.69-6,6v58.97c0,3.31,2.69,6,6,6h.9c3.31,0,6-2.69,6-6Z"/>
+              </svg>
+            </button>
+
+            <button type="button" class="player-controls__next player-controls__next-mirrored">
+              <svg class="player-controls__next-icon" viewBox="0 0 55.23 70.97">
+                <path d="M6.9,70.97h-.9c-3.31,0-6-2.69-6-6V6C0,2.69,2.69,0,6,0h.9c3.31,0,6,2.69,6,6v58.97c0,3.31-2.69,6-6,6ZM29.44,35.48l12.69,12.69V22.79l-12.69,12.69Zm26.09,28.98c0,3.47-2.81,6.28-6.27,6.28h-.86c-.07,0-.15-.01-.22-.01-1.45,.05-2.91-.47-4.02-1.57L14.49,39.48c-1.11-1.1-1.62-2.56-1.58-4-.04-1.44,.47-2.9,1.58-4L43.2,2.77C44.32,1.1,46.23,0,48.4,0h.86c3.46,0,6.27,2.81,6.27,6.27v58.19Zm-13.4-16.29V22.79l-12.69,12.69,12.69,12.69Z"/>
+              </svg>
+            </button>
+
+            <button type="button" class="player-controls__repeat">
+              <svg class="player-controls__repeat-icon"></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="playlist" id="playlist">
+    <div class="start-section">
+      <div class="start-section__figure"></div>
+      <h2 class="start-section__title">Библиотека</h2>
+    </div>
+
+    <div class="tracks-container">
+      <article class="track-card">
+        <img class="track-card__image" src="" alt="Трек">
+        <footer class="track-card__content">
+          <button type="button" class="track-card__play">
+            <svg class="player-controls__play-icon" viewBox="0 0 52.69 70.74">
+              <path d="M20.44,35.48l15.69,12.69V22.79l-15.69,12.69Zm32.25,28.98c0,3.47-3.47,6.28-7.75,6.28h-1.06c-.09,0-.19,0-.27,0-1.79,.05-3.6-.47-4.97-1.57L1.96,39.48C.58,38.38-.05,36.92,0,35.48c-.05-1.44,.58-2.9,1.95-4L37.44,2.77c1.38-1.67,3.75-2.77,6.43-2.77h1.06c4.28,0,7.75,2.81,7.75,6.27v58.19Zm-16.56-16.29V22.79l-15.69,12.69,15.69,12.69Z"/>
+            </svg>
+          </button>
+          <div class="track-card__title">Название</div>
+        </footer>
+      </article>
+      <article class="track-card track-card--collection">
+          <span class="track-card__message">Больше треков</span>
+          <a href="" class="track-card__collection-link">Перейти</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="recommendations" id="recommendations">
+    <div class="start-section">
+      <div class="start-section__figure"></div>
+      <h2 class="start-section__title">Рекомендации</h2>
+    </div>
+
+    <div class="grid-recommendations">
+      <button type="button" class="grid-recommendations__auto">
+        <span class="grid-recommendations__text">Случайный трек</span>
+
+      </button>
+      <button type="button" class="grid-recommendations__playlist">
+        <span class="grid-recommendations__text">Новые плейлисты</span>
+
+      </button>
+      <button type="button" class="grid-recommendations__album">
+        <span class="grid-recommendations__text">Новые альбомы</span>
+
+      </button>
+      <button type="button" class="grid-recommendations__track">
+        <span class="grid-recommendations__text">Новые треки</span>
+
+      </button>
+      <button type="button" class="grid-recommendations__search">
+        <span class="grid-recommendations__text">Поиск трека</span>
+
+      </button>
+    </div>
+  </section>
+
+  <section class="statistics" id="statistics">
+    <div class="start-section">
+      <div class="start-section__figure"></div>
+      <h2 class="start-section__title">Статистика</h2>
+    </div>
+
+    <div class="statistics__grid">
+
+      <!-- Карточка 1: Общая статистика -->
+      <div class="statistics-card statistics-card--primary">
+        <div class="statistics-card__icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M3 3v16a2 2 0 0 0 2 2h16" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 14l3-3 3 3 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="statistics-card__content">
+          <span class="statistics-card__label">Всего треков</span>
+          <span class="statistics-card__value" data-target="247">247</span>
+        </div>
+      </div>
+
+      <!-- Карточка 2: Время прослушивания -->
+      <div class="statistics-card">
+        <div class="statistics-card__icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+            <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="statistics-card__content">
+          <span class="statistics-card__label">Часов прослушано</span>
+          <span class="statistics-card__value" data-target="1,284">1,284</span>
+        </div>
+      </div>
+
+      <!-- Карточка 3: Любимые треки -->
+      <div class="statistics-card">
+        <div class="statistics-card__icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L15 8L22 9L17 14L18 21L12 17.5L6 21L7 14L2 9L9 8L12 2Z"
+                  stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="statistics-card__content">
+          <span class="statistics-card__label">Любимые треки</span>
+          <span class="statistics-card__value" data-target="42">42</span>
+        </div>
+      </div>
+
+      <!-- Карточка 4: Жанры -->
+      <div class="statistics-card">
+        <div class="statistics-card__icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="4" width="6" height="6" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="14" y="4" width="6" height="6" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="4" y="14" width="6" height="6" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="14" y="14" width="6" height="6" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="statistics-card__content">
+          <span class="statistics-card__label">Жанров</span>
+          <span class="statistics-card__value" data-target="18">18</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<aside class="aside">
+  <div class="aside__progress">
+    <a href="#player" class="point-section">
+      <svg class="point-section__icon" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+        <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/>
+      </svg>
+    </a>
+    <div class="point"></div>
+    <div class="point"></div>
+    <div class="point"></div>
+    <div class="point"></div>
+    <div class="point"></div>
+
+    <a href="#playlist" class="point-section">
+      <svg class="point-section__icon" viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="5" width="18" height="4" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <rect x="3" y="11" width="12" height="2" rx="1" fill="currentColor"/>
+        <rect x="3" y="15" width="8" height="2" rx="1" fill="currentColor"/>
+        <circle cx="17" cy="16" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </a>
+    <div class="point"></div>
+    <div class="point"></div>
+    <div class="point"></div>
+    <div class="point"></div>
+    <div class="point"></div>
+
+    <a href="#recommendations" class="point-section">
+      <svg class="point-section__icon" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L15 8L22 9L17 14L18 21L12 17.5L6 21L7 14L2 9L9 8L12 2Z"
+              stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+    </a>
+    <div class="point"></div>
+    <div class="point"></div>
+    <div class="point"></div>
+    <div class="point"></div>
+    <div class="point"></div>
+
+    <a href="#statistics" class="point-section">
+      <svg class="point-section__icon" viewBox="0 0 24 24" fill="none">
+        <path d="M3 3v16a2 2 0 0 0 2 2h16" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M7 14l3-3 3 3 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </a>
+  </div>
+  <div class="aside__setting">
+    <div class="panel">
+      <button type="button" id="btn-theme" class="panel__button" data-theme="dark" title="Сменить тему">
+        <svg id="btn-theme-svg" class="panel__button-icon" viewBox="0 0 83.77 92.56">
+          <path d="M71.94,83.59c-7.29,5.02-16.13,7.97-25.65,7.97C21.27,91.56,1,71.29,1,46.28S21.27,1,46.28,1c1.09,0,2.18,.05,3.25,.13-11.85,8.17-19.63,21.83-19.63,37.31,0,23.91,18.54,43.48,42.03,45.15ZM53.13,28.02l-4.48,.65,3.24,3.16-.76,4.46,4-2.1,4,2.1-.76-4.46,3.24-3.16-4.48-.65-2-4.06-2,4.06Zm14.37,17.17l-7.45,1.08,5.39,5.25-1.27,7.42,6.66-3.5,6.66,3.5-1.27-7.42,5.39-5.25-7.45-1.08-3.33-6.75-3.33,6.75Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</aside>
+
+<footer class="footer">
+  <div class="footer__container">
+
+    <div class="footer__miku">
+      <div class="greeting-miku">
+        <div class="miku-face miku-face--front"></div>
+        <div class="miku-face miku-face--top"></div>
+        <div class="miku-face miku-face--side"></div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,182 @@
+@use '../core/_variables' as *;
+@use '../core/_functions' as *;
+@use '../core/_mixins' as *;
+
+.statistics {
+  @include mix-flex(
+      $direction: column,
+      $gap: 1rem
+  );
+}
+
+.statistics__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.statistics-card {
+  @include mix-flex(
+      $align: center,
+      $gap: 1rem
+  );
+  background: $color-grey-lv-3;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  transition-duration: .3s;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    @include mix-pseudo(
+        $content: '',
+        $position: absolute,
+        $top: 0,
+        $left: 100%,
+        $z-index: 200
+    );
+    inset: 0;
+    background: linear-gradient(
+            135deg, transparent 0%,
+            color-mix(in srgb, $color-blue-230 50%, transparent) 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      color: $color-blue-260;
+      @include neon-dropShadow($neon-blue-230, 1px, 4px, 2);
+    }
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__label {
+    display: block;
+    font-family: $font-bahnschrift;
+    font-size: .75rem;
+    color: $color-light;
+  }
+
+  &__value {
+    display: block;
+    font-family: $font-bahnschrift;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $color-light;
+  }
+}
+
+.statistics__insights {
+  margin-top: 1.5rem;
+  background: $color-grey-lv-4;
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+.statistics-insight {
+  & + & {
+    margin-top: 1rem;
+  }
+
+  &__header {
+    @include mix-flex(
+        $justify: space-between,
+    );
+    margin-bottom: 0.5rem;
+
+    span {
+      font-family: $font-bahnschrift;
+      font-size: 0.875rem;
+    }
+  }
+
+  &__label {
+    color: $color-light;
+  }
+
+  &__percent {
+    color: $color-blue-260;
+  }
+
+  &__bar {
+    width: 100%;
+    height: 6px;
+    background: $color-grey-lv-2;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    background: linear-gradient(90deg, $color-blue-230, $color-blue-260);
+    border-radius: 3px;
+    box-shadow: 0 0 8px $color-blue-260;
+    transition: width 0.5s ease;
+  }
+}
+
+.statistics__last-track {
+  margin-top: 1.5rem;
+}
+
+.last-track {
+  @include mix-flex(
+      $align: center,
+      $gap: 1rem
+  );
+  background: $color-grey-lv-4;
+  border-radius: 1rem;
+  padding: 1rem;
+
+  &__cover {
+    width: 48px;
+    height: 48px;
+    background: $color-grey-lv-2;
+    border-radius: 0.5rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__label {
+    font-size: 0.75rem;
+    color: $color-dark;
+    display: block;
+  }
+
+  &__title {
+    font-family: $font-bahnschrift;
+    font-weight: 500;
+    color: $color-light;
+  }
+
+  &__artist {
+    font-size: 0.875rem;
+    color: $color-dark;
+  }
+}
