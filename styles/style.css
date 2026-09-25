@@ -706,6 +706,15 @@ section {
   --base-scale: 1.25;
   transform: scale(var(--base-scale));
 }
+.player-controls__play-icon--play {
+  display: none;
+}
+.player-controls__play--paused .player-controls__play-icon--pause {
+  display: none;
+}
+.player-controls__play--paused .player-controls__play-icon--play {
+  display: block;
+}
 .player-controls__next-mirrored {
   --base-scale: -1;
   transform: scale(var(--base-scale));
@@ -1086,65 +1095,117 @@ section {
 }
 .footer__container {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
-  height: 100%;
   border-radius: 1rem;
   background-color: var(--color-grey-lv-4);
-  padding: 1rem;
+  padding: 1.5rem 2rem;
+  gap: 1.5rem;
 }
-.footer__container > * {
-  height: 100%;
+@media (min-width: 768px) {
+  .footer__container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+  }
+}
+@media (min-width: 1200px) {
+  .footer__container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+}
+.footer__logo {
+  display: block;
+}
+@media (min-width: 768px) {
+  .footer__logo {
+    flex-shrink: 0;
+  }
+}
+.footer__logo-img {
+  display: block;
+  max-height: 3rem;
+  width: auto;
+  filter: drop-shadow(0 0 6px rgba(var(--color-blue-230), 0.5));
+  transition: filter var(--transition-speed, 0.3s);
+}
+.footer__logo-img:hover, .footer__logo-img:focus {
+  filter: drop-shadow(0 0 12px var(--color-blue-230));
+}
+.footer__nav, .footer__col {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .footer__nav, .footer__col {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+.footer__nav-title {
+  font-family: "Bahnschrift", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-light);
+  margin-bottom: 0.75rem;
+}
+.footer__nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer__nav-link {
+  font-family: "Bahnschrift", sans-serif;
+  font-size: 0.875rem;
+  color: var(--color-light);
+  opacity: 0.7;
+  text-decoration: none;
+  transition: color 0.2s, opacity 0.2s;
+}
+.footer__nav-link:hover, .footer__nav-link:focus {
+  color: var(--color-blue-230);
+  opacity: 1;
+  outline: none;
+}
+.footer__nav-link:hover::after, .footer__nav-link:focus::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: var(--color-blue-230);
+  box-shadow: 0 0 6px var(--color-blue-230);
+}
+.footer__heading {
+  font-family: "Bahnschrift", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-light);
+  margin: 0 0 0.75rem 0;
+}
+.footer__link {
+  font-family: "Bahnschrift", sans-serif;
+  font-size: 0.875rem;
+  color: var(--color-light);
+  opacity: 0.7;
+  text-decoration: none;
+  transition: color 0.2s, opacity 0.2s, text-shadow 0.2s;
+}
+.footer__link:hover, .footer__link:focus {
+  color: var(--color-blue-230);
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(var(--color-blue-230), 0.6);
+  outline: none;
 }
 
-.greeting-miku {
-  position: relative;
-  top: 70%;
-  left: 70%;
-  width: 5rem;
-  height: 5rem;
-  z-index: 200;
-  transform: rotateX(340deg) rotateY(40deg);
-  transform-style: preserve-3d;
-}
-.greeting-miku::before {
-  content: "";
-  position: absolute;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 12rem;
-  aspect-ratio: 1/1;
-  transform: rotateX(0deg) rotateY(-50deg) rotateZ(0deg) translateZ(6rem) translateY(-13rem);
-  background-image: url("/media/images/miku.png");
-  filter: drop-shadow(0 0 12px hsl(210, 100%, 30%));
-  z-index: 300;
-}
-.greeting-miku .miku-face {
-  position: absolute;
-}
-.greeting-miku .miku-face--front {
-  width: 10rem;
-  height: 2rem;
-  background: linear-gradient(145deg, hsl(0, 0%, 17.5%), hsl(0, 0%, 17.5%));
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
-  transform: translateZ(5rem);
-}
-.greeting-miku .miku-face--top {
-  width: 10rem;
-  height: 10rem;
-  background: linear-gradient(to bottom, hsl(0, 0%, 6%), hsl(0, 0%, 17.5%));
-  transform: rotateX(90deg) translateZ(5rem);
-}
-.greeting-miku .miku-face--side {
-  width: 10rem;
-  height: 2rem;
-  background: linear-gradient(to right, hsl(0, 0%, 17.5%), hsl(0, 0%, 6%));
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  transform: rotateY(90deg) translateZ(-5rem);
-}
 
 .body {
   display: grid;

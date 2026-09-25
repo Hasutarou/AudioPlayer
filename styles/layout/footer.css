@@ -1,3 +1,157 @@
+body[data-theme=dark] {
+  --theme: 'dark';
+  --color-light: white;
+  --color-dark: black;
+  --color-body: hsl(225, 14%, 10%);
+  --color-grey-lv-1: hsl(225, 14%, 4%);
+  --color-grey-lv-2: hsl(225, 14%, 6%);
+  --color-grey-lv-3: hsl(225, 14%, 8%);
+  --color-grey-lv-4: hsl(225, 14%, 12%);
+  --color-grey-lv-5: hsl(225, 14%, 14%);
+  --color-grey-lv-6: hsl(225, 14%, 16%);
+  --color-blue-230: hsl(230 100% 50%);
+  --color-blue-230-lg: hsl(230 100% 70%);
+  --color-blue-260: hsl(260 100% 50%);
+  --color-blue-260-lg: hsl(260 100% 70%);
+  --neon-blue-230: var(--color-blue-260);
+  --neon-blue-260: var(--color-blue-260-lg);
+  --color-point-shadow: var(--color-blue-260);
+  --color-point-background: var(--color-blue-260);
+}
 
+body[data-theme=light] {
+  --theme: 'light';
+  --color-light: black;
+  --color-dark: white;
+  --color-body: hsl(0, 0%, 90%);
+  --color-grey-lv-1: hsl(0, 0%, 98%);
+  --color-grey-lv-2: hsl(0, 0%, 96%);
+  --color-grey-lv-3: hsl(0, 0%, 88%);
+  --color-grey-lv-4: hsl(0, 0%, 84%);
+  --color-grey-lv-5: hsl(0, 0%, 80%);
+  --color-grey-lv-6: hsl(0, 0%, 75%);
+  --color-blue-230: hsl(230 80% 50%);
+  --color-blue-230-lg: hsl(230 80% 70%);
+  --color-blue-260: hsl(260 80% 50%);
+  --color-blue-260-lg: hsl(260 80% 70%);
+  --neon-blue-230: none;
+  --neon-blue-260: none;
+  --color-point-shadow: var(--color-grey-lv-1);
+  --color-point-background: white;
+}
 
-/*# sourceMappingURL=footer.css.map */
+.footer {
+  padding: 1rem 0 1rem 1rem;
+}
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: var(--color-grey-lv-4);
+  padding: 1.5rem 2rem;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .footer__container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+  }
+}
+@media (min-width: 1200px) {
+  .footer__container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+}
+.footer__logo {
+  display: block;
+}
+@media (min-width: 768px) {
+  .footer__logo {
+    flex-shrink: 0;
+  }
+}
+.footer__logo-img {
+  display: block;
+  max-height: 3rem;
+  width: auto;
+  filter: drop-shadow(0 0 6px rgba(var(--color-blue-230), 0.5));
+  transition: filter var(--transition-speed, 0.3s);
+}
+.footer__logo-img:hover, .footer__logo-img:focus {
+  filter: drop-shadow(0 0 12px var(--color-blue-230));
+}
+.footer__nav, .footer__col {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .footer__nav, .footer__col {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+.footer__nav-title {
+  font-family: "Bahnschrift", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-light);
+  margin-bottom: 0.75rem;
+}
+.footer__nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer__nav-link {
+  font-family: "Bahnschrift", sans-serif;
+  font-size: 0.875rem;
+  color: var(--color-light);
+  opacity: 0.7;
+  text-decoration: none;
+  transition: color 0.2s, opacity 0.2s;
+}
+.footer__nav-link:hover, .footer__nav-link:focus {
+  color: var(--color-blue-230);
+  opacity: 1;
+  outline: none;
+}
+.footer__nav-link:hover::after, .footer__nav-link:focus::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: var(--color-blue-230);
+  box-shadow: 0 0 6px var(--color-blue-230);
+}
+.footer__heading {
+  font-family: "Bahnschrift", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-light);
+  margin: 0 0 0.75rem 0;
+}
+.footer__link {
+  font-family: "Bahnschrift", sans-serif;
+  font-size: 0.875rem;
+  color: var(--color-light);
+  opacity: 0.7;
+  text-decoration: none;
+  transition: color 0.2s, opacity 0.2s, text-shadow 0.2s;
+}
+.footer__link:hover, .footer__link:focus {
+  color: var(--color-blue-230);
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(var(--color-blue-230), 0.6);
+  outline: none;
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/layout/auth.css">
+  <title>Регистрация — Player</title>
+</head>
+<body class="auth-page" data-theme="dark">
+  <header class="auth-header">
+    <a class="auth-header__logo" href="index.html" aria-label="Вернуться на главную">
+      <img class="auth-header__logo-image" src="media/logotype/logo-test.png" alt="Player">
+    </a>
+    <a class="auth-header__back" href="index.html">Вернуться к плееру</a>
+  </header>
+
+  <main class="auth">
+    <section class="auth__card" aria-labelledby="registration-title">
+      <div class="auth__intro">
+        <span class="auth__eyebrow">Аккаунт</span>
+        <h1 class="auth__title" id="registration-title">Регистрация</h1>
+        <p class="auth__description">Создайте аккаунт, чтобы сохранять любимые треки и коллекции.</p>
+      </div>
+
+      <form class="auth-form" action="#" method="post">
+        <label class="auth-form__field" for="registration-name">
+          <span class="auth-form__label">Имя</span>
+          <input class="auth-form__input" id="registration-name" name="name" type="text" placeholder="Как к вам обращаться" autocomplete="name" required>
+        </label>
+
+        <label class="auth-form__field" for="registration-email">
+          <span class="auth-form__label">Электронная почта</span>
+          <input class="auth-form__input" id="registration-email" name="email" type="email" placeholder="name@example.com" autocomplete="email" required>
+        </label>
+
+        <label class="auth-form__field" for="registration-password">
+          <span class="auth-form__label">Пароль</span>
+          <input class="auth-form__input" id="registration-password" name="password" type="password" placeholder="Не менее 8 символов" minlength="8" autocomplete="new-password" required>
+        </label>
+
+        <label class="auth-form__field" for="registration-password-confirm">
+          <span class="auth-form__label">Повторите пароль</span>
+          <input class="auth-form__input" id="registration-password-confirm" name="passwordConfirm" type="password" placeholder="Повторите пароль" minlength="8" autocomplete="new-password" required>
+        </label>
+
+        <div class="auth-form__options">
+          <label class="auth-form__checkbox" for="registration-terms">
+            <input class="auth-form__checkbox-input" id="registration-terms" name="terms" type="checkbox" required>
+            <span>Я принимаю условия использования</span>
+          </label>
+        </div>
+
+        <button class="auth-form__submit" type="submit">Создать аккаунт</button>
+      </form>
+
+      <p class="auth__switch">Уже есть аккаунт? <a class="auth__link" href="authorization.html">Войти</a></p>
+    </section>
+  </main>
+</body>
+</html>

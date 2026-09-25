@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/layout/auth.css">
+  <title>Вход — Player</title>
+</head>
+<body class="auth-page" data-theme="dark">
+  <header class="auth-header">
+    <a class="auth-header__logo" href="index.html" aria-label="Вернуться на главную">
+      <img class="auth-header__logo-image" src="media/logotype/logo-test.png" alt="Player">
+    </a>
+    <a class="auth-header__back" href="index.html">Вернуться к плееру</a>
+  </header>
+
+  <main class="auth">
+    <section class="auth__card" aria-labelledby="authorization-title">
+      <div class="auth__intro">
+        <span class="auth__eyebrow">Аккаунт</span>
+        <h1 class="auth__title" id="authorization-title">Вход</h1>
+        <p class="auth__description">Войдите, чтобы продолжить слушать музыку и управлять коллекциями.</p>
+      </div>
+
+      <form class="auth-form" action="#" method="post">
+        <label class="auth-form__field" for="authorization-email">
+          <span class="auth-form__label">Электронная почта</span>
+          <input class="auth-form__input" id="authorization-email" name="email" type="email" placeholder="name@example.com" autocomplete="email" required>
+        </label>
+
+        <label class="auth-form__field" for="authorization-password">
+          <span class="auth-form__label">Пароль</span>
+          <input class="auth-form__input" id="authorization-password" name="password" type="password" placeholder="Введите пароль" autocomplete="current-password" required>
+        </label>
+
+        <div class="auth-form__options">
+          <label class="auth-form__checkbox" for="authorization-remember">
+            <input class="auth-form__checkbox-input" id="authorization-remember" name="remember" type="checkbox">
+            <span>Запомнить меня</span>
+          </label>
+          <a class="auth__link" href="#">Забыли пароль?</a>
+        </div>
+
+        <button class="auth-form__submit" type="submit">Войти</button>
+      </form>
+
+      <p class="auth__switch">Нет аккаунта? <a class="auth__link" href="registration.html">Зарегистрируйтесь</a></p>
+    </section>
+  </main>
+</body>
+</html>

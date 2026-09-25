@@ -14,9 +14,7 @@
   <link rel="stylesheet" href="styles/style.css">
   <script src="scripts/progressPoint.js" defer></script>
   <script src="scripts/panelSetting.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.0/jsmediatags.min.js"></script>
   <script src="scripts/archiveTracks.js" defer></script>
-  <script src="scripts/server.js" defer></script>
   <title>Player</title>
 </head>
 <body class="body" data-theme="dark">
@@ -59,8 +57,8 @@
   </nav>
 
   <div class="login">
-      <a href="" target="_blank" class="login__signup">Авторизоваться</a>
-      <a href="" target="_blank" class="login__signing">Войти</a>
+      <a href="registration.html" class="login__signup">Регистрация</a>
+      <a href="authorization.html" class="login__signing">Войти</a>
   </div>
 </header>
 
@@ -95,28 +93,25 @@
             <progress
               class="player-controls__progress-bar"
               value="0"
-              max="100"></progress>
+              max="100"
+              tabindex="0"
+              aria-label="Прогресс воспроизведения"></progress>
           </div>
           <div class="player-controls__time">
             <span class="player-controls__time-current">0:00</span>
             <span class="player-controls__time-end">0:00</span>
           </div>
           <div class="player-controls__functional">
-            <button type="button" class="player-controls__shuffle">
-              <svg class="player-controls__shuffle-icon">
-
-              </svg>
-            </button>
-
             <button type="button" class="player-controls__prev">
               <svg class="player-controls__prev-icon" viewBox="0 0 55.23 70.97">
                 <path d="M6.9,70.97h-.9c-3.31,0-6-2.69-6-6V6C0,2.69,2.69,0,6,0h.9c3.31,0,6,2.69,6,6v58.97c0,3.31-2.69,6-6,6ZM29.44,35.48l12.69,12.69V22.79l-12.69,12.69Zm26.09,28.98c0,3.47-2.81,6.28-6.27,6.28h-.86c-.07,0-.15-.01-.22-.01-1.45,.05-2.91-.47-4.02-1.57L14.49,39.48c-1.11-1.1-1.62-2.56-1.58-4-.04-1.44,.47-2.9,1.58-4L43.2,2.77C44.32,1.1,46.23,0,48.4,0h.86c3.46,0,6.27,2.81,6.27,6.27v58.19Zm-13.4-16.29V22.79l-12.69,12.69,12.69,12.69Z"/>
               </svg>
             </button>
 
-            <button type="button" class="player-controls__play player-controls__play-scale">
+            <button type="button" class="player-controls__play player-controls__play-scale player-controls__play--paused">
               <svg class="player-controls__play-icon" viewBox="0 0 50.35 70.97">
-                <path d="M6.9,70.97h-.9c-3.31,0-6-2.69-6-6V6C0,2.69,2.69,0,6,0h.9c3.31,0,6,2.69,6,6v58.97c0,3.31-2.69,6-6,6Zm43.44-6V6C50.35,2.69,47.66,0,44.35,0h-.9c-3.31,0-6,2.69-6,6v58.97c0,3.31,2.69,6,6,6h.9c3.31,0,6-2.69,6-6Z"/>
+                <path class="player-controls__play-icon--pause" d="M6.9,70.97h-.9c-3.31,0-6-2.69-6-6V6C0,2.69,2.69,0,6,0h.9c3.31,0,6,2.69,6,6v58.97c0,3.31-2.69,6-6,6Zm43.44-6V6C50.35,2.69,47.66,0,44.35,0h-.9c-3.31,0-6,2.69-6,6v58.97c0,3.31,2.69,6,6,6h.9c3.31,0,6-2.69,6-6Z"/>
+                <path class="player-controls__play-icon--play" d="M14,7.5v56L45,35.5Z"/>
               </svg>
             </button>
 
@@ -124,10 +119,6 @@
               <svg class="player-controls__next-icon" viewBox="0 0 55.23 70.97">
                 <path d="M6.9,70.97h-.9c-3.31,0-6-2.69-6-6V6C0,2.69,2.69,0,6,0h.9c3.31,0,6,2.69,6,6v58.97c0,3.31-2.69,6-6,6ZM29.44,35.48l12.69,12.69V22.79l-12.69,12.69Zm26.09,28.98c0,3.47-2.81,6.28-6.27,6.28h-.86c-.07,0-.15-.01-.22-.01-1.45,.05-2.91-.47-4.02-1.57L14.49,39.48c-1.11-1.1-1.62-2.56-1.58-4-.04-1.44,.47-2.9,1.58-4L43.2,2.77C44.32,1.1,46.23,0,48.4,0h.86c3.46,0,6.27,2.81,6.27,6.27v58.19Zm-13.4-16.29V22.79l-12.69,12.69,12.69,12.69Z"/>
               </svg>
-            </button>
-
-            <button type="button" class="player-controls__repeat">
-              <svg class="player-controls__repeat-icon"></svg>
             </button>
           </div>
         </div>
@@ -142,17 +133,6 @@
     </div>
 
     <div class="tracks-container">
-      <article class="track-card">
-        <img class="track-card__image" src="" alt="Трек">
-        <footer class="track-card__content">
-          <button type="button" class="track-card__play">
-            <svg class="player-controls__play-icon" viewBox="0 0 52.69 70.74">
-              <path d="M20.44,35.48l15.69,12.69V22.79l-15.69,12.69Zm32.25,28.98c0,3.47-3.47,6.28-7.75,6.28h-1.06c-.09,0-.19,0-.27,0-1.79,.05-3.6-.47-4.97-1.57L1.96,39.48C.58,38.38-.05,36.92,0,35.48c-.05-1.44,.58-2.9,1.95-4L37.44,2.77c1.38-1.67,3.75-2.77,6.43-2.77h1.06c4.28,0,7.75,2.81,7.75,6.27v58.19Zm-16.56-16.29V22.79l-15.69,12.69,15.69,12.69Z"/>
-            </svg>
-          </button>
-          <div class="track-card__title">Название</div>
-        </footer>
-      </article>
       <article class="track-card track-card--collection">
           <span class="track-card__message">Больше треков</span>
           <a href="" class="track-card__collection-link">Перейти</a>
@@ -321,13 +301,35 @@
 <footer class="footer">
   <div class="footer__container">
 
-    <div class="footer__miku">
-      <div class="greeting-miku">
-        <div class="miku-face miku-face--front"></div>
-        <div class="miku-face miku-face--top"></div>
-        <div class="miku-face miku-face--side"></div>
-      </div>
+    <a href="index.html" class="footer__logo">
+      <img src="media/logotype/logo-test.png" alt="Audio Player V3" class="footer__logo-img">
+    </a>
+
+    <nav class="footer__nav" aria-label="Навигация">
+      <p class="footer__nav-title">Навигация</p>
+      <ul class="footer__nav-list">
+        <li class="footer__nav-item"><a href="#player" class="footer__nav-link">Проигрыватель</a></li>
+        <li class="footer__nav-item"><a href="#playlist" class="footer__nav-link">Плейлист</a></li>
+        <li class="footer__nav-item"><a href="#recommendations" class="footer__nav-link">Рекомендации</a></li>
+        <li class="footer__nav-item"><a href="#statistics" class="footer__nav-link">Статистика</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer__col footer__col-privacy">
+      <p class="footer__heading">О политике конфиденциальности</p>
+      <a href="#" class="footer__link">Читать далее...</a>
     </div>
+
+    <div class="footer__col footer__col-contacts">
+      <p class="footer__heading">Контакты</p>
+      <a href="mailto:hello@audioplayer.ru" class="footer__link footer__link--mail">hello@audioplayer.ru</a>
+    </div>
+
+    <div class="footer__col footer__col-number">
+      <p class="footer__heading">Номер</p>
+      <a href="tel:+79991234567" class="footer__link footer__link--tel">+7 (999) 123-45-67</a>
+    </div>
+
   </div>
 </footer>
 </body>

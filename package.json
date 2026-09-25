@@ -1,0 +1,11 @@
+{
+  "name": "audio-player-v3",
+  "private": true,
+  "scripts": {
+    "start": "node scripts/server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "music-metadata": "^7.14.0"
+  }
+}

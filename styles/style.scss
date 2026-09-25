@@ -11,6 +11,7 @@
 
 // Подключение Layout стилей
 @forward 'layout/header';
+@forward 'layout/auth';
 @forward 'layout/aside';
 @forward 'layout/main';
 @forward 'layout/section-1-player';

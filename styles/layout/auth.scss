@@ -1,0 +1,214 @@
+@use '../core/_variables' as *;
+@use '../core/_mixins' as *;
+
+.auth-page {
+  @include mix-flex(
+    $direction: column
+  );
+  min-height: 100vh;
+  padding: 1rem clamp(1rem, 4vw, 3rem) clamp(1rem, 4vw, 3rem);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(38, 85, 211, .2), transparent 32rem),
+    radial-gradient(circle at 85% 80%, rgba(151, 42, 206, .16), transparent 30rem),
+    $color-body;
+  color: $color-light;
+}
+
+.auth-header {
+  @include mix-flex(
+    $align: center,
+    $justify: space-between
+  );
+  width: min(100%, 72rem);
+  margin: 0 auto 1rem;
+}
+
+.auth-header__logo {
+  @include mix-flex(
+    $align: center
+  );
+  color: $color-light;
+  text-decoration: none;
+}
+
+.auth-header__logo-image {
+  width: 9rem;
+  height: auto;
+}
+
+.auth-header__back,
+.auth__link {
+  color: $color-light;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.auth-header__back:hover,
+.auth-header__back:focus-visible,
+.auth__link:hover,
+.auth__link:focus-visible {
+  color: var(--color-blue-230-lg);
+}
+
+.auth {
+  @include mix-flex(
+    $align: center,
+    $justify: center
+  );
+  flex: 1;
+  width: 100%;
+}
+
+.auth__card {
+  width: min(100%, 30rem);
+  padding: clamp(1.5rem, 5vw, 3rem);
+  background-color: $color-grey-lv-3;
+  border: 1px solid $color-grey-lv-6;
+  border-radius: 1rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .3);
+}
+
+.auth__intro {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.auth__eyebrow {
+  display: block;
+  margin-bottom: .5rem;
+  color: var(--color-blue-230-lg);
+  font-family: $font-bahnschrift;
+  font-size: $font-size-0_75rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.auth__title {
+  margin-bottom: .75rem;
+  font-family: $font-bahnschrift;
+  font-size: $font-size-2rem;
+  font-weight: 500;
+}
+
+.auth__description {
+  color: $color-light;
+  font-family: $font-nunito;
+  font-size: $font-size-0_875rem;
+  opacity: .7;
+}
+
+.auth-form {
+  @include mix-flex(
+    $direction: column,
+    $gap: 1rem
+  );
+}
+
+.auth-form__field {
+  @include mix-flex(
+    $direction: column,
+    $gap: .45rem
+  );
+}
+
+.auth-form__label {
+  font-family: $font-bahnschrift;
+  font-size: $font-size-0_875rem;
+}
+
+.auth-form__input {
+  width: 100%;
+  min-height: 3rem;
+  padding: .7rem .9rem;
+  color: $color-light;
+  font: inherit;
+  background-color: $color-grey-lv-2;
+  border: 1px solid $color-grey-lv-6;
+  border-radius: .5rem;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.auth-form__input::placeholder {
+  color: $color-light;
+  opacity: .35;
+}
+
+.auth-form__input:focus {
+  border-color: $color-blue-230;
+  box-shadow: 0 0 0 .2rem rgba(38, 85, 211, .2);
+}
+
+.auth-form__options {
+  @include mix-flex(
+    $align: center,
+    $justify: space-between,
+    $wrap: wrap,
+    $gap: .75rem
+  );
+}
+
+.auth-form__checkbox {
+  @include mix-flex(
+    $align: center,
+    $gap: .5rem
+  );
+  font-family: $font-nunito;
+  font-size: $font-size-0_75rem;
+  opacity: .8;
+}
+
+.auth-form__checkbox-input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: $color-blue-260;
+}
+
+.auth-form__submit {
+  min-height: 3rem;
+  margin-top: .5rem;
+  padding: .75rem 1rem;
+  color: white;
+  font-family: $font-bahnschrift;
+  font-size: $font-size-0_875rem;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, $color-blue-230, $color-blue-260);
+  border: 0;
+  border-radius: .5rem;
+  box-shadow: 0 .5rem 1.5rem rgba(38, 85, 211, .25);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.auth-form__submit:hover,
+.auth-form__submit:focus-visible {
+  filter: brightness(1.1);
+  box-shadow: 0 .75rem 2rem rgba(151, 42, 206, .35);
+  transform: translateY(-2px);
+}
+
+.auth-form__submit:active {
+  transform: translateY(0);
+}
+
+.auth__switch {
+  margin-top: 1.5rem;
+  color: $color-light;
+  font-family: $font-nunito;
+  font-size: $font-size-0_875rem;
+  text-align: center;
+  opacity: .8;
+}
+
+@media (max-width: 600px) {
+  .auth-header__logo-image {
+    width: 7rem;
+  }
+
+  .auth-header__back {
+    font-size: $font-size-0_75rem;
+  }
+
+  .auth__card {
+    border-radius: .75rem;
+  }
+}

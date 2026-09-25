@@ -226,6 +226,18 @@
     transform: scale(var(--base-scale));
   }
 
+  &__play-icon--play {
+    display: none;
+  }
+
+  &__play--paused &__play-icon--pause {
+    display: none;
+  }
+
+  &__play--paused &__play-icon--play {
+    display: block;
+  }
+
   &__next-mirrored {
     --base-scale: -1;
     transform: scale(var(--base-scale));
